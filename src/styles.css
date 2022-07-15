@@ -1,0 +1,44 @@
+lh2 {
+    text-align: center;
+}
+
+h1 {
+    text-align: right;
+    font-size: 40px;
+    margin: 0px;
+}
+
+button {
+    border: white;
+    background-color: white;
+}
+
+p {
+    text-align: center;
+    font-size: 30px;
+    margin: 0px;
+}
+
+.forecast {
+    margin: auto;
+    width: 55%;
+}
+
+.details {
+    margin: auto;
+    width: 55%;
+}
+
+.celsium,
+.fahrenheit {
+    text-decoration: none;
+}
+
+.celsium:hover,
+.fahrenheit:hover {
+    text-decoration: underline;
+}
+
+#search {
+    display: inline;
+}

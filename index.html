@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <title>Weather app</title>
+    <meta charset="UTF-8" />
+    <link href="src/styles.css" />
+  </head>
+
+  <body>
+      <form class="search-form">
+          <div class="mb-3 row">
+        
+            <input type="text" class="form-control col" id="search" placeholder="Type a city...">
+            <button type ="submit" class="col-1" id="search-button"> 🔍 </button>
+      </form>
+    <h2 class = city>
+      BERLIN
+    </h2>
+    <p class = date></p>
+
+
+    <p class="weatherDesc">
+      🌧 Rain
+    </p>
+    <div class="temp-container">
+        <div class="row">
+            <div class="col-6">
+              <h1 class = temp>
+                14°
+              </h1>
+            </div>
+            <div class="col-6">
+              <a href="#" class ="celsium" > °C </a>
+              |
+              <a href="#" class ="fahrenheit"> °F </a>
+            </div>
+        </div>
+    </div>    
+
+    <div class="details">
+      <div class="row">
+        <div class="col-6">
+          <strong>Humidity</strong>:  93 % 
+        </div>
+        <div class="col-6">
+          <strong>Wind</strong>: 15 km/h
+        </div>
+      </div>
+    </div>
+<p class="weekForecast"> 
+  This week forecast ⤵️ 
+</p>
+
+<div class="forecast">
+    <div class="row">
+      <div class="col-6">
+          Today
+      </div>
+      <div class="col-6">
+          8° / 20 °  🌧	
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            Tommorow
+        </div>
+        <div class="col-6">
+            18° / 23° ⛅️
+        </div>    
+    </div>
+      <div class="row">
+        <div class="col-6">
+            Wednesday
+        </div>
+        <div class="col-6">
+            15° / 24° ⛅️
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+            Thursday
+        </div>
+          <div class="col-6">
+              25°/ 28° 🌤
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-6">
+              Friday
+            </div>
+            <div class="col-6">
+              27° / 31° ☀️ 
+           </div>  
+      </div>
+  </div>
+
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
