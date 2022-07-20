@@ -1,48 +1,63 @@
-let curDate = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
+const { default: axios } = require("axios");
 
-function changeCity() {
-  console.log("yes");
-  let city = document.querySelector(".city");
-  let search = document.querySelector("#search");
-  if (!search.value) {
-    console.log(search.value);
-    city.innerHTML = "Berlin";
-  } else {
-    city.innerHTML = search.value;
+(function () {
+  let curDate = new Date();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+
+  function showTemp(response) {
+    console.log(response.data);
+    let temp = document.querySelector(".temp");
+    temp.innerHTML = Math.round(response.data.main.temp);
   }
-}
 
-function changeTemp(event) {
-  event.preventDefault();
-  let temp = document.querySelector(".temp");
-  if (event.target.className === "fahrenheit") {
-    temp.innerHTML = "60";
-  } else {
-    temp.innerHTML = "14";
+  function changeCity(event) {
+    event.preventDefault();
+    let city = document.querySelector(".city");
+    let apiKey = "6f1ef73058d115e56afccee279259142";
+
+    let search = document.querySelector("#search");
+    let cityName = search.value;
+    if (!cityName) {
+      cityName = "Berlin";
+    }
+    city.innerHTML = cityName;
+
+    let urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+    axios.get(urlWeather).then(showTemp);
   }
-}
 
-let date = document.querySelector(".date");
-let curMin = curDate.getMinutes();
-if (curMin.length === 1) {
-  curMin = "0" + curMin;
-}
-date.innerHTML =
-  days[curDate.getDay()] + " " + curDate.getHours() + ":" + curMin;
+  function changeTemp(event) {
+    event.preventDefault();
+    let temp = document.querySelector(".temp");
+    if (event.target.className === "fahrenheit") {
+      temp.innerHTML = "60";
+    } else {
+      temp.innerHTML = "14";
+    }
+  }
 
-let button = document.querySelector("#search-button");
-button.addEventListener("click", changeCity);
+  let date = document.querySelector(".date");
+  let curMin = curDate.getMinutes();
+  if (curMin < 10) {
+    curMin = "0" + curMin;
+  }
 
-let fahrenheitLink = document.querySelector(".fahrenheit");
-fahrenheitLink.addEventListener("click", changeTemp);
-let celsiumLink = document.querySelector(".celsium");
-celsiumLink.addEventListener("click", changeTemp);
+  date.innerHTML =
+    days[curDate.getDay()] + " " + curDate.getHours() + ":" + curMin;
+
+  let button = document.querySelector("#search-button");
+  button.addEventListener("click", changeCity);
+
+  let fahrenheitLink = document.querySelector(".fahrenheit");
+  fahrenheitLink.addEventListener("click", changeTemp);
+  let celsiumLink = document.querySelector(".celsium");
+  celsiumLink.addEventListener("click", changeTemp);
+})();
